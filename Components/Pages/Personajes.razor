@@ -1,0 +1,58 @@
+@page "/personajes"
+@rendermode InteractiveServer
+@inject SerieContext Sc
+
+<h4>Personajes</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apodo</th>
+            <th>Raza</th>
+            <th>Foto</th>
+            <th>Edad</th>
+            <th>Signo Zodiacal</th>
+            <th>Poder Caracteristico</th>
+            <th>Acciones</th> <!-- Nueva columna para acciones -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in lista)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Apodo</td>
+                <td>@item.Raza</td>
+                <td><img src="@item.FotoUrl" alt="@item.Nombre" width="100" /></td>
+                <td>@item.Edad</td>
+                <td>@item.SignoZodiazal</td>
+                <td>@item.PoderCaracteristico</td>
+                <td>
+                    <button class="btn btn-danger" @onclick="() => EliminarPersonaje(item.Id)">Eliminar</button>
+                </td> <!-- Botón para eliminar -->
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<Personaje> lista = new List<Personaje>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        lista = Sc.Personajes.ToList();
+        StateHasChanged();
+    }
+
+    private async Task EliminarPersonaje(int id)
+    {
+        var personajeAEliminar = Sc.Personajes.FirstOrDefault(p => p.Id == id);
+        if (personajeAEliminar != null)
+        {
+            Sc.Personajes.Remove(personajeAEliminar); // Elimina el personaje de la base de datos
+            await Sc.SaveChangesAsync(); // Guarda los cambios en la base de datos
+            lista.Remove(personajeAEliminar); // Actualiza la lista en la interfaz
+            StateHasChanged(); // Actualiza la vista
+        }
+    }
+}

@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<PageTitle>Inicio</PageTitle>
+
+@page "/registro"
+
+<h1>🎯 Registro de Series, Películas o Libros y Personajes</h1>
+
+<h2>Objetivo</h2>
+<p>El objetivo de esta práctica es aplicar conceptos clave de comunicación entre componentes, enrutamiento, manejo de formularios y validación en Blazor, así como integrar Entity Framework Core para la persistencia de datos. Los estudiantes desarrollarán una aplicación que permita registrar series, películas o libros, y sus personajes asociados.</p>
+
+<h2>📋 Instrucciones:</h2>
+
+<h3>1️⃣ Registro de Series, Películas o Libros usando SQLITE:</h3>
+<p>Crea una página para registrar series, películas o libros con los siguientes campos:</p>
+<ul>
+    <li>Nombre (texto).</li>
+    <li>País (texto).</li>
+    <li>Idioma (texto).</li>
+    <li>Foto URL (enlace a una imagen).</li>
+    <li>Resumen (área de texto para describir la serie/película/libro).</li>
+</ul>
+
+<h3>2️⃣ Registro de Personajes:</h3>
+<p>Crea una página para registrar personajes asociados a una serie, película o libro, con los siguientes campos:</p>
+<ul>
+    <li>Nombre (texto).</li>
+    <li>Apodo (texto).</li>
+    <li>Raza (texto).</li>
+    <li>Foto URL (enlace a una imagen).</li>
+    <li>Edad (número).</li>
+    <li>Poder Característico (texto).</li>
+</ul>
+<p>El estudiante deberá seleccionar la serie, película o libro al que pertenece el personaje.</p>
+
+<h3>3️⃣ Enrutamiento y Navegación:</h3>
+<p>Implementa el enrutamiento en Blazor para permitir la navegación entre las páginas de registro de series/películas/libros y de personajes. Asegúrate de que las URLs sean dinámicas, de modo que la página de un personaje contenga el ID de la serie/película/libro a la que está asociado.</p>
+
+<h3>4️⃣ Persistencia de Datos con Entity Framework Core:</h3>
+<p>Implementa Entity Framework Core para la persistencia de datos. Crea modelos para Series/Películas/Libros y Personajes, con las correspondientes relaciones entre ellos. Implementa las migraciones necesarias y asegúrate de que los datos se guarden en una base de datos. Desarrolla las operaciones CRUD (Crear, Leer, Actualizar, Borrar) para gestionar tanto las series/películas/libros como los personajes.</p>
